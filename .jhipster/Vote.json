@@ -27,13 +27,18 @@
             "fieldValidateRules": [
                 "required"
             ]
+        },
+        {
+            "fieldName": "remark",
+            "fieldType": "byte[]",
+            "fieldTypeBlobContent": "text"
         }
     ],
     "changelogDate": "20180102110706",
-    "javadoc": "投票",
-    "entityTableName": "vote",
     "dto": "no",
-    "pagination": "pagination",
     "service": "serviceImpl",
-    "jpaMetamodelFiltering": false
+    "entityTableName": "vote",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pagination",
+    "javadoc": "投票"
 }

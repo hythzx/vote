@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
-import { JhiEventManager } from 'ng-jhipster';
+import { JhiEventManager, JhiDataUtils } from 'ng-jhipster';
 
 import { Vote } from './vote.model';
 import { VoteService } from './vote.service';
@@ -18,6 +18,7 @@ export class VoteDetailComponent implements OnInit, OnDestroy {
 
     constructor(
         private eventManager: JhiEventManager,
+        private dataUtils: JhiDataUtils,
         private voteService: VoteService,
         private route: ActivatedRoute
     ) {
@@ -34,6 +35,13 @@ export class VoteDetailComponent implements OnInit, OnDestroy {
         this.voteService.find(id).subscribe((vote) => {
             this.vote = vote;
         });
+    }
+    byteSize(field) {
+        return this.dataUtils.byteSize(field);
+    }
+
+    openFile(contentType, field) {
+        return this.dataUtils.openFile(contentType, field);
     }
     previousState() {
         window.history.back();

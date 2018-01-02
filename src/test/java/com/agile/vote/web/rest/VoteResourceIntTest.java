@@ -20,6 +20,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.util.Base64Utils;
 
 import javax.persistence.EntityManager;
 import java.time.Instant;
@@ -52,6 +53,9 @@ public class VoteResourceIntTest {
 
     private static final ZonedDateTime DEFAULT_END_DATE = ZonedDateTime.ofInstant(Instant.ofEpochMilli(0L), ZoneOffset.UTC);
     private static final ZonedDateTime UPDATED_END_DATE = ZonedDateTime.now(ZoneId.systemDefault()).withNano(0);
+
+    private static final String DEFAULT_REMARK = "AAAAAAAAAA";
+    private static final String UPDATED_REMARK = "BBBBBBBBBB";
 
     @Autowired
     private VoteRepository voteRepository;
@@ -96,7 +100,8 @@ public class VoteResourceIntTest {
         Vote vote = new Vote()
             .title(DEFAULT_TITLE)
             .startDate(DEFAULT_START_DATE)
-            .endDate(DEFAULT_END_DATE);
+            .endDate(DEFAULT_END_DATE)
+            .remark(DEFAULT_REMARK);
         return vote;
     }
 
@@ -123,6 +128,7 @@ public class VoteResourceIntTest {
         assertThat(testVote.getTitle()).isEqualTo(DEFAULT_TITLE);
         assertThat(testVote.getStartDate()).isEqualTo(DEFAULT_START_DATE);
         assertThat(testVote.getEndDate()).isEqualTo(DEFAULT_END_DATE);
+        assertThat(testVote.getRemark()).isEqualTo(DEFAULT_REMARK);
     }
 
     @Test
@@ -211,7 +217,8 @@ public class VoteResourceIntTest {
             .andExpect(jsonPath("$.[*].id").value(hasItem(vote.getId().intValue())))
             .andExpect(jsonPath("$.[*].title").value(hasItem(DEFAULT_TITLE.toString())))
             .andExpect(jsonPath("$.[*].startDate").value(hasItem(sameInstant(DEFAULT_START_DATE))))
-            .andExpect(jsonPath("$.[*].endDate").value(hasItem(sameInstant(DEFAULT_END_DATE))));
+            .andExpect(jsonPath("$.[*].endDate").value(hasItem(sameInstant(DEFAULT_END_DATE))))
+            .andExpect(jsonPath("$.[*].remark").value(hasItem(DEFAULT_REMARK.toString())));
     }
 
     @Test
@@ -227,7 +234,8 @@ public class VoteResourceIntTest {
             .andExpect(jsonPath("$.id").value(vote.getId().intValue()))
             .andExpect(jsonPath("$.title").value(DEFAULT_TITLE.toString()))
             .andExpect(jsonPath("$.startDate").value(sameInstant(DEFAULT_START_DATE)))
-            .andExpect(jsonPath("$.endDate").value(sameInstant(DEFAULT_END_DATE)));
+            .andExpect(jsonPath("$.endDate").value(sameInstant(DEFAULT_END_DATE)))
+            .andExpect(jsonPath("$.remark").value(DEFAULT_REMARK.toString()));
     }
 
     @Test
@@ -253,7 +261,8 @@ public class VoteResourceIntTest {
         updatedVote
             .title(UPDATED_TITLE)
             .startDate(UPDATED_START_DATE)
-            .endDate(UPDATED_END_DATE);
+            .endDate(UPDATED_END_DATE)
+            .remark(UPDATED_REMARK);
 
         restVoteMockMvc.perform(put("/api/votes")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -267,6 +276,7 @@ public class VoteResourceIntTest {
         assertThat(testVote.getTitle()).isEqualTo(UPDATED_TITLE);
         assertThat(testVote.getStartDate()).isEqualTo(UPDATED_START_DATE);
         assertThat(testVote.getEndDate()).isEqualTo(UPDATED_END_DATE);
+        assertThat(testVote.getRemark()).isEqualTo(UPDATED_REMARK);
     }
 
     @Test

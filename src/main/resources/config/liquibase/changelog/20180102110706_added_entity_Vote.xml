@@ -38,7 +38,15 @@
         </createTable>
         <dropDefaultValue tableName="vote" columnName="start_date" columnDataType="datetime"/>
         <dropDefaultValue tableName="vote" columnName="end_date" columnDataType="datetime"/>
-        
+
+    </changeSet>
+
+    <changeSet id="201701030146-01" author="zhaoyuan">
+        <addColumn tableName="vote">
+            <column name="remark" type="clob">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
     </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

@@ -52,6 +52,10 @@ public class Vote implements Serializable {
     @Column(name = "end_date", nullable = false)
     private ZonedDateTime endDate;
 
+    @Lob
+    @Column(name = "remark")
+    private String remark;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -99,6 +103,19 @@ public class Vote implements Serializable {
     public void setEndDate(ZonedDateTime endDate) {
         this.endDate = endDate;
     }
+
+    public String getRemark() {
+        return remark;
+    }
+
+    public Vote remark(String remark) {
+        this.remark = remark;
+        return this;
+    }
+
+    public void setRemark(String remark) {
+        this.remark = remark;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -128,6 +145,7 @@ public class Vote implements Serializable {
             ", title='" + getTitle() + "'" +
             ", startDate='" + getStartDate() + "'" +
             ", endDate='" + getEndDate() + "'" +
+            ", remark='" + getRemark() + "'" +
             "}";
     }
 }

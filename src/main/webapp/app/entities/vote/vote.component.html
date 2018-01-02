@@ -20,6 +20,7 @@
             <th jhiSortBy="title"><span jhiTranslate="voteApp.vote.title">Title</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="startDate"><span jhiTranslate="voteApp.vote.startDate">Start Date</span> <span class="fa fa-sort"></span></th>
             <th jhiSortBy="endDate"><span jhiTranslate="voteApp.vote.endDate">End Date</span> <span class="fa fa-sort"></span></th>
+            <th jhiSortBy="remark"><span jhiTranslate="voteApp.vote.remark">Remark</span> <span class="fa fa-sort"></span></th>
             <th></th>
             </tr>
             </thead>
@@ -29,6 +30,7 @@
                 <td>{{vote.title}}</td>
                 <td>{{vote.startDate | date:'medium'}}</td>
                 <td>{{vote.endDate | date:'medium'}}</td>
+                <td>{{vote.remark}}</td>
                 <td class="text-right">
                     <div class="btn-group flex-btn-group-container">
                         <button type="submit"
