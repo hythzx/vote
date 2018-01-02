@@ -1,0 +1,23 @@
+{
+    "voteApp": {
+        "voteItem" : {
+            "home": {
+                "title": "投票项",
+                "createLabel": "创建新 投票项",
+                "createOrEditLabel": "创建或编辑 投票项"
+            },
+            "created": "投票项 {{ param }} 创建成功",
+            "updated": "投票项 {{ param }} 更新成功",
+            "deleted": "投票项 {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 投票项 {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "投票项"
+            },
+            "title": "标题",
+            "voteCount": "投票数",
+            "vote": "投票信息"
+        }
+    }
+}

@@ -1,20 +1,15 @@
 {
     "global": {
-        "title": "Vote",
+        "title": "公司活动投票系统",
         "browsehappy": "您目前使用<strong>过于老旧</strong>的浏览器, 建议您<a href=\"http://browsehappy.com/?locale=en\">升级浏览器</a>让您有更佳的上网体验.",
         "menu": {
             "home": "首页",
             "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
             "entities": {
                 "main": "数据",
-                "regionMySuffix": "Region",
-                "countryMySuffix": "Country",
-                "locationMySuffix": "Location",
-                "departmentMySuffix": "Department",
-                "taskMySuffix": "Task",
-                "employeeMySuffix": "Employee",
-                "jobMySuffix": "Job",
-                "jobHistoryMySuffix": "Job History",
+                "vote": "投票",
+                "voteItem": "投票项",
+                "voteResult": "投票记录",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {
@@ -136,5 +131,5 @@
         "emailexists": "该邮箱已被使用!",
         "idexists": "新建的 {{entityName}} 不能包含ID"
     },
-    "footer": "这里是页脚"
+    "footer": "&copy; 2018南京艾云信息科技有限公司 "
 }

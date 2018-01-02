@@ -1,0 +1,36 @@
+
+<div *ngIf="voteItem">
+    <h2><span jhiTranslate="voteApp.voteItem.detail.title">Vote Item</span> {{voteItem.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="voteApp.voteItem.title">Title</span></dt>
+        <dd>
+            <span>{{voteItem.title}}</span>
+        </dd>
+        <dt><span jhiTranslate="voteApp.voteItem.voteCount">Vote Count</span></dt>
+        <dd>
+            <span>{{voteItem.voteCount}}</span>
+        </dd>
+        <dt><span jhiTranslate="voteApp.voteItem.vote">Vote</span></dt>
+        <dd>
+            <div *ngIf="voteItem.vote">
+                <a [routerLink]="['/vote', voteItem.vote?.id]">{{voteItem.vote?.title}}</a>
+            </div>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'vote-item/'+ voteItem.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

@@ -1,0 +1,23 @@
+{
+    "voteApp": {
+        "voteResult" : {
+            "home": {
+                "title": "投票记录",
+                "createLabel": "创建新 投票记录",
+                "createOrEditLabel": "创建或编辑 投票记录"
+            },
+            "created": "投票记录 {{ param }} 创建成功",
+            "updated": "投票记录 {{ param }} 更新成功",
+            "deleted": "投票记录 {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 投票记录 {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "投票记录"
+            },
+            "voteTime": "投票时间",
+            "openid": "用户ID",
+            "voteItem": "投票选项"
+        }
+    }
+}
