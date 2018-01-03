@@ -6,6 +6,9 @@ export const createRequestOption = (req?: any): BaseRequestOptions => {
         const params: URLSearchParams = new URLSearchParams();
         params.set('page', req.page);
         params.set('size', req.size);
+        if (req.voteId) {
+            params.set('voteId', req.voteId);
+        }
         if (req.sort) {
             params.paramsMap.set('sort', req.sort);
         }

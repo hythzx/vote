@@ -48,5 +48,13 @@
             </column>
         </addColumn>
     </changeSet>
+
+    <changeSet id="201801031615-01" author="zhaoyuan">
+        <addColumn tableName="vote">
+            <column name="deleted" type="bit">
+                <constraints nullable="true" />
+            </column>
+        </addColumn>
+    </changeSet>
     <!-- jhipster-needle-liquibase-add-changeset - JHipster will add changesets here, do not remove-->
 </databaseChangeLog>

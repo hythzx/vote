@@ -32,6 +32,10 @@
             "fieldName": "remark",
             "fieldType": "byte[]",
             "fieldTypeBlobContent": "text"
+        },
+        {
+            "fieldName": "deleted",
+            "fieldType": "Boolean"
         }
     ],
     "changelogDate": "20180102110706",

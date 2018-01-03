@@ -6,6 +6,8 @@ import { JhiEventManager, JhiParseLinks, JhiAlertService } from 'ng-jhipster';
 import { VoteItem } from './vote-item.model';
 import { VoteItemService } from './vote-item.service';
 import { ITEMS_PER_PAGE, Principal, ResponseWrapper } from '../../shared';
+import {VoteService} from "../vote/vote.service";
+import {Vote} from "../vote/vote.model";
 
 @Component({
     selector: 'jhi-vote-item',
@@ -15,6 +17,8 @@ export class VoteItemComponent implements OnInit, OnDestroy {
 
 currentAccount: any;
     voteItems: VoteItem[];
+    votes: Vote[];
+    voteId: any = null;
     error: any;
     success: any;
     eventSubscriber: Subscription;
@@ -35,6 +39,7 @@ currentAccount: any;
         private principal: Principal,
         private activatedRoute: ActivatedRoute,
         private router: Router,
+        private voteService: VoteService,
         private eventManager: JhiEventManager
     ) {
         this.itemsPerPage = ITEMS_PER_PAGE;
@@ -50,6 +55,7 @@ currentAccount: any;
         this.voteItemService.query({
             page: this.page - 1,
             size: this.itemsPerPage,
+            voteId: this.voteId?this.voteId: '',
             sort: this.sort()}).subscribe(
             (res: ResponseWrapper) => this.onSuccess(res.json, res.headers),
             (res: ResponseWrapper) => this.onError(res.json)
@@ -86,6 +92,8 @@ currentAccount: any;
             this.currentAccount = account;
         });
         this.registerChangeInVoteItems();
+        this.voteService.query()
+            .subscribe((res: ResponseWrapper) => { this.votes = res.json; }, (res: ResponseWrapper) => this.onError(res.json));
     }
 
     ngOnDestroy() {

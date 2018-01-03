@@ -22,6 +22,7 @@ module.exports = webpackMerge(commonConfig({ env: ENV }), {
                 '/swagger-resources',
                 '/v2/api-docs',
                 '/h2-console',
+                '/wechat',
                 '/auth'
             ],
             target: 'http://127.0.0.1:8080',

@@ -28,12 +28,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label class="form-control-label" jhiTranslate="voteApp.voteItem.voteCount" for="field_voteCount">Vote Count</label>
-            <input type="number" class="form-control" name="voteCount" id="field_voteCount"
-                [(ngModel)]="voteItem.voteCount" />
-        </div>
-
-        <div class="form-group">
             <label class="form-control-label" jhiTranslate="voteApp.voteItem.vote" for="field_vote">Vote</label>
             <select class="form-control" id="field_vote" name="vote" [(ngModel)]="voteItem.vote" >
                 <option [ngValue]="null"></option>

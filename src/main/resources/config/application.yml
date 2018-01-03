@@ -80,7 +80,7 @@ jhipster:
     mail:
         from: vote@localhost
     swagger:
-        default-include-pattern: /api/.*
+        default-include-pattern: /api/.*|/wechat/.*
         title: vote API
         description: vote API documentation
         version: 0.0.1

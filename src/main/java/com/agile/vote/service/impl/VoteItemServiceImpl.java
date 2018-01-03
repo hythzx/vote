@@ -46,9 +46,13 @@ public class VoteItemServiceImpl implements VoteItemService{
      */
     @Override
     @Transactional(readOnly = true)
-    public Page<VoteItem> findAll(Pageable pageable) {
+    public Page<VoteItem> findAll(Pageable pageable, Long voteId) {
         log.debug("Request to get all VoteItems");
-        return voteItemRepository.findAll(pageable);
+        if (voteId == null) {
+            return voteItemRepository.findAll(pageable);
+        }else {
+            return voteItemRepository.findByVoteId(voteId, pageable);
+        }
     }
 
     /**

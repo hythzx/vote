@@ -23,7 +23,7 @@ public interface VoteItemService {
      * @param pageable the pagination information
      * @return the list of entities
      */
-    Page<VoteItem> findAll(Pageable pageable);
+    Page<VoteItem> findAll(Pageable pageable, Long voteId);
 
     /**
      * Get the "id" voteItem.

@@ -90,9 +90,9 @@ public class VoteItemResource {
      */
     @GetMapping("/vote-items")
     @Timed
-    public ResponseEntity<List<VoteItem>> getAllVoteItems(Pageable pageable) {
+    public ResponseEntity<List<VoteItem>> getAllVoteItems(Pageable pageable, Long voteId) {
         log.debug("REST request to get a page of VoteItems");
-        Page<VoteItem> page = voteItemService.findAll(pageable);
+        Page<VoteItem> page = voteItemService.findAll(pageable, voteId);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(page, "/api/vote-items");
         return new ResponseEntity<>(page.getContent(), headers, HttpStatus.OK);
     }

@@ -32,9 +32,9 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://nj-agile.com:3306/vote?useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://localhost:3306/vote?useUnicode=true&characterEncoding=utf8&useSSL=false
         username: root
-        password: hythzx@163.com
+        password: root
         hikari:
             data-source-properties:
                 cachePrepStmts: true

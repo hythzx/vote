@@ -1,6 +1,6 @@
 
 <div *ngIf="voteResult">
-    <h2><span jhiTranslate="voteApp.voteResult.detail.title">Vote Result</span> {{voteResult.id}}</h2>
+    <h2><span jhiTranslate="voteApp.voteResult.detail.title">Vote Result</span></h2>
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="row-md jh-entity-details">
@@ -26,11 +26,4 @@
         <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
     </button>
 
-    <button type="button"
-            [routerLink]="['/', { outlets: { popup: 'vote-result/'+ voteResult.id + '/edit'} }]"
-            replaceUrl="true"
-            queryParamsHandling="merge"
-            class="btn btn-primary">
-        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
-    </button>
 </div>

@@ -54,6 +54,7 @@ public class VoteResource {
         if (vote.getId() != null) {
             throw new BadRequestAlertException("A new vote cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        vote.setDeleted(false);
         Vote result = voteService.save(vote);
         return ResponseEntity.created(new URI("/api/votes/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
@@ -121,7 +122,11 @@ public class VoteResource {
     @Timed
     public ResponseEntity<Void> deleteVote(@PathVariable Long id) {
         log.debug("REST request to delete Vote : {}", id);
-        voteService.delete(id);
+        Vote vote = voteService.findOne(id);
+        if (vote != null) {
+            vote.setDeleted(true);
+            voteService.save(vote);
+        }
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }
 }

@@ -17,6 +17,7 @@
             },
             "voteTime": "投票时间",
             "openid": "用户ID",
+            "vote": "投票",
             "voteItem": "投票选项"
         }
     }

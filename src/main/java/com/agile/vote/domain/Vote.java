@@ -56,6 +56,9 @@ public class Vote implements Serializable {
     @Column(name = "remark")
     private String remark;
 
+    @Column(name = "deleted")
+    private Boolean deleted;
+
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {
         return id;
@@ -116,6 +119,19 @@ public class Vote implements Serializable {
     public void setRemark(String remark) {
         this.remark = remark;
     }
+
+    public Boolean isDeleted() {
+        return deleted;
+    }
+
+    public Vote deleted(Boolean deleted) {
+        this.deleted = deleted;
+        return this;
+    }
+
+    public void setDeleted(Boolean deleted) {
+        this.deleted = deleted;
+    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
@@ -146,6 +162,7 @@ public class Vote implements Serializable {
             ", startDate='" + getStartDate() + "'" +
             ", endDate='" + getEndDate() + "'" +
             ", remark='" + getRemark() + "'" +
+            ", deleted='" + isDeleted() + "'" +
             "}";
     }
 }

@@ -10,6 +10,22 @@
     </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <select type="text" class="form-control" name="title" id="field_title" [(ngModel)]="voteId"
+                     maxlength="512" placeholder="关键词">
+                <option value="" selected>全部</option>
+                <option *ngFor="let vote of votes" value="{{vote.id}}">{{vote.title}}</option>
+            </select>
+
+        </div>
+
+        <div class="col-lg-3 col-md-4 col-sm-6 col-xs-12">
+            <button class="btn btn-primary" (click)="loadAll()">
+                <span class="fa fa-search"></span>
+                检索
+            </button>
+        </div>
+
     </div>
     <br/>
     <div class="table-responsive" *ngIf="voteItems">
