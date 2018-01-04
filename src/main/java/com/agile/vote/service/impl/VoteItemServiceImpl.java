@@ -49,7 +49,7 @@ public class VoteItemServiceImpl implements VoteItemService{
     public Page<VoteItem> findAll(Pageable pageable, Long voteId) {
         log.debug("Request to get all VoteItems");
         if (voteId == null) {
-            return voteItemRepository.findAll(pageable);
+            return voteItemRepository.findByVoteDeleted(false, pageable);
         }else {
             return voteItemRepository.findByVoteId(voteId, pageable);
         }

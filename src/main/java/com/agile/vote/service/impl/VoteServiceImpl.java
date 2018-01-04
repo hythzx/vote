@@ -48,7 +48,7 @@ public class VoteServiceImpl implements VoteService{
     @Transactional(readOnly = true)
     public Page<Vote> findAll(Pageable pageable) {
         log.debug("Request to get all Votes");
-        return voteRepository.findAll(pageable);
+        return voteRepository.findByDeleted(false, pageable);
     }
 
     /**

@@ -32,4 +32,12 @@ public interface VoteItemRepository extends JpaRepository<VoteItem, Long> {
      */
     List<VoteItem> findByVoteId(Long id);
 
+    /**
+     * 获取所有的投票项列表
+     * @param deleted
+     * @param pageable
+     * @return
+     */
+    Page<VoteItem> findByVoteDeleted(Boolean deleted, Pageable pageable);
+
 }

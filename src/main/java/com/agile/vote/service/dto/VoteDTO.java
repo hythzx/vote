@@ -33,6 +33,11 @@ public class VoteDTO {
 
     List<VoteItem> voteItemList;
 
+    /**
+     * 投票的选项
+     */
+    private Long votedItemId;
+
     public Long getId() {
         return id;
     }
@@ -87,6 +92,14 @@ public class VoteDTO {
 
     public void setVoted(Boolean voted) {
         isVoted = voted;
+    }
+
+    public Long getVotedItemId() {
+        return votedItemId;
+    }
+
+    public void setVotedItemId(Long votedItemId) {
+        this.votedItemId = votedItemId;
     }
 
     @Override

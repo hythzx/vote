@@ -47,10 +47,6 @@ public class WechatServiceServiceImpl implements WechatServiceService {
     public List<VoteDTO> getActiveVoteList(String login){
         List<Vote> voteList = voteRepository.findByStartDateBeforeAndEndDateAfterAndDeleted(ZonedDateTime.now(), ZonedDateTime.now(), false);
         List<VoteDTO> voteDTOS = voteMapper.toDto(voteList);
-        for (VoteDTO voteDTO : voteDTOS) {
-            List<VoteItem> voteItemList = voteItemRepository.findByVoteId(voteDTO.getId());
-            voteDTO.setVoteItemList(voteItemList);
-        }
         return voteDTOS;
     }
 
@@ -70,6 +66,7 @@ public class WechatServiceServiceImpl implements WechatServiceService {
             voteDTO.setVoteItemList(voteItemList);
             List<VoteResult> resultList = findCurrentUserVoteHistory(vote.getId(), login);
             voteDTO.setVoted(resultList.isEmpty()? false: true);
+            voteDTO.setVotedItemId(resultList.isEmpty()?null:resultList.get(0).getVoteItem().getId());
         }
         return voteDTO;
     }
@@ -90,10 +87,20 @@ public class WechatServiceServiceImpl implements WechatServiceService {
         VoteResult voteResult = new VoteResult();
         voteResult.setOpenid(login);
         voteResult.setVoteTime(ZonedDateTime.now());
-        VoteItem voteItem = new VoteItem();
-        voteItem.setId(id);
+        VoteItem voteItem = voteItemRepository.findOne(id);
+        if (voteItem == null) {
+            throw new Exception("投票信息错误");
+        }
+        Integer voteCount = voteItem.getVoteCount();
+        if (voteCount == null) {
+            voteItem.setVoteCount(1);
+        }else {
+            voteItem.setVoteCount(voteCount + 1);
+        }
         voteResult.setVoteItem(voteItem);
         VoteResult voteResult1 = voteResultRepository.save(voteResult);
+        voteItemRepository.save(voteItem);
+
         return voteResult1;
     }
 
